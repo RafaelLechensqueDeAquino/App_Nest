@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: "senha123"
+      POSTGRES_USER: "root"
+      POSTGRES_DB: "gestao"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./postgres-data/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    command: postgres -c 'config_file=/etc/postgresql/postgresql.conf'
